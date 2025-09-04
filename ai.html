@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aristotle AI</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+    }
+
+    /* Fullscreen video background */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; /* Ensures video fits all screens */
+      z-index: -1;
+      filter: brightness(0.45);
+    }
+
+    /* Overlay content */
+    .overlay {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+    }
+
+    .overlay h1 {
+      font-size: 5rem; /* Bigger text for 1440p */
+      color: #00f5ff;
+      text-shadow: 0 0 25px #00f5ff, 0 0 40px #0077ff;
+      max-width: 95%;
+    }
+
+    /* Hamburger Menu */
+    nav {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      z-index: 200;
+    }
+
+    nav input {
+      display: none;
+    }
+
+    nav label {
+      display: block;
+      cursor: pointer;
+      width: 50px;  /* Bigger hamburger for visibility */
+      height: 36px;
+      position: relative;
+    }
+
+    nav label span {
+      background: #00f5ff;
+      position: absolute;
+      height: 6px; /* Thicker bars */
+      width: 100%;
+      left: 0;
+      transition: 0.3s;
+      border-radius: 3px;
+    }
+
+    nav label span:nth-child(1) { top: 0; }
+    nav label span:nth-child(2) { top: 15px; }
+    nav label span:nth-child(3) { top: 30px; }
+
+    nav ul {
+      list-style: none;
+      background: rgba(0,0,0,0.95);
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 250px;
+      height: 100%;
+      padding: 100px 30px;
+      transition: left 0.3s ease;
+    }
+
+    nav ul li {
+      margin: 40px 0;
+    }
+
+    nav ul li a {
+      color: #00f5ff;
+      text-decoration: none;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav input:checked ~ ul {
+      left: 0;
+    }
+
+    /* Sections */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      color: #b366ff;
+      text-shadow: 0 0 15px #b366ff;
+    }
+
+    section p {
+      max-width: 1100px;
+      font-size: 1.6rem;
+      line-height: 2.2;
+      opacity: 0.95;
+    }
+
+    /* Placeholder Image + Text */
+    .image-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .image-text img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 14px;
+      border: 2px solid #00f5ff;
+    }
+
+    @media(min-width: 900px) {
+      .image-text {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      padding: 30px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #777;
+    }
+
+    /* Fade-in on scroll */
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background video -->
+  <video autoplay muted loop class="video-bg">
+    <source src="your-tech-video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Hamburger Menu -->
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <ul>
+      <li><a href="#image-creation">Image Creation</a></li>
+      <li><a href="#chat">Chat with Aristotle</a></li>
+      <li><a href="#generate-video">Generate Video</a></li>
+    </ul>
+  </nav>
+
+  <!-- Landing Page -->
+  <div class="overlay">
+    <h1>HELLO WELCOME TO ARISTOTLE AI</h1>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="fade">
+    <h2>About Aristotle AI</h2>
+    <p>
+      Aristotle AI is designed to revolutionize the way humans and machines collaborate, blending creativity, intelligence, and innovation for a smarter future.  
+      Our mission is not just to create AI tools, but to build intelligent systems that embody wisdom, reasoning, and empathy — much like Aristotle himself once envisioned.
+    </p>
+  </section>
+
+  <!-- Image + Text Section -->
+  <section id="image-creation" class="fade">
+    <div class="image-text">
+      <img src="ai.png" alt="Future AI Image">
+      <p>
+        Built with state-of-the-art AI technology, Aristotle AI transforms complex challenges into simple solutions.  
+        From powering industries to enhancing creativity, we’re pushing the boundaries of what AI can achieve.  
+        Our systems are designed to adapt, learn, and grow with you — supporting innovation every step of the way.
+      </p>
+    </div>
+  </section>
+
+  <!-- Community & Goal Section -->
+  <section id="community" class="fade">
+    <h2>Our Community & Goal</h2>
+    <p>
+      At SDMIT, a spark of curiosity brought together four passionate minds — <b>Ganesh Poojary</b>, <b>Shamith Netratal</b>, <b>Schindra</b>, and <b>Venkatesh</b> — united by a shared dream of exploring the limitless possibilities of artificial intelligence.  
+      As third-year students from the CSE and ISE branches, what began as late-night coding sessions, spirited debates, and countless cups of coffee slowly transformed into a vision far greater than ourselves.  
+
+      <br><br>We realized that AI should not only solve problems but also reason, learn, and guide humanity with wisdom — just like the great philosopher Aristotle once did. From this belief was born <b>Aristotle AI</b>, a community-driven initiative dedicated to building ethical, powerful, and human-centric AI solutions.  
+
+      <br><br>Our goal is to create technology that inspires learning, supports innovation, and bridges the gap between knowledge and action.  
+      As a team, we see ourselves not just as developers, but as dreamers, builders, and collaborators who want to make a lasting impact.  
+
+      <br><br><i>Aristotle AI is more than a project for us — it is a movement to combine philosophy with technology, to nurture wisdom in machines, and to empower society with intelligence that is both practical and meaningful.</i>  
+
+      <br><br>We believe the future of AI is not just automation — it’s collaboration, growth, and empowerment.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Aristotle AI | All Rights Reserved
+  </footer>
+</body>
+</html>
